@@ -1,0 +1,175 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.wrap {
+  background: #020d1f;
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.5rem;
+  font-family: var(--font-sans), sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+.circuit-lines {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
+}
+.header { text-align: center; margin-bottom: 1.75rem; position: relative; z-index: 2; }
+.header-tag {
+  display: inline-block; font-size: 10px; letter-spacing: 3px; color: #00e5ff; border: 1px solid #00e5ff44; padding: 3px 12px; border-radius: 2px; margin-bottom: 10px; text-transform: uppercase;
+}
+.header h2 { font-size: 22px; font-weight: 500; color: #e0f7ff; margin-bottom: 4px; letter-spacing: 1px; }
+.header p { font-size: 12px; color: #4a8fa8; letter-spacing: 1px; text-transform: uppercase; }
+.cards-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 1.75rem; position: relative; z-index: 2;
+}
+.link-card {
+  background: #041830; border: 1px solid #0d4a6e; border-radius: 10px; padding: 1.25rem 1rem 1rem; text-decoration: none; display: flex; flex-direction: column; gap: 10px; cursor: pointer; position: relative; overflow: hidden; transition: border-color 0.2s, background 0.2s;
+}
+.link-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #00e5ff, transparent); opacity: 0.6;
+}
+.link-card:hover { border-color: #00e5ff88; background: #061e35; }
+.card-num {
+  font-size: 10px; color: #00e5ff; letter-spacing: 2px; text-transform: uppercase; font-weight: 500;
+}
+.card-icon-wrap {
+  width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid;
+}
+.card-title { font-size: 17px; font-weight: 500; color: #cce8ff; }
+.card-desc { font-size: 11px; color: #3d7a99; line-height: 1.5; }
+.card-arrow {
+  align-self: flex-end; font-size: 16px; color: #00e5ff; margin-top: auto;
+}
+.divider {
+  border: none; border-top: 1px solid #0d3a55; margin: 0 0 1.5rem; position: relative; z-index: 2;
+}
+.divider::after {
+  content: ''; display: block; width: 60px; height: 1px; background: #00e5ff; margin: -1px auto 0;
+}
+.qr-section { position: relative; z-index: 2; }
+.qr-header {
+  text-align: center; margin-bottom: 14px;
+}
+.qr-header span {
+  font-size: 10px; letter-spacing: 3px; color: #4a8fa8; text-transform: uppercase;
+}
+.qr-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;
+}
+.qr-card {
+  background: #041830; border: 1px solid #0d4a6e; border-radius: 10px; padding: 14px 12px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.qr-canvas-wrap {
+  padding: 6px; background: #fff; border-radius: 6px;
+}
+.qr-label { font-size: 12px; font-weight: 500; color: #cce8ff; text-align: center; letter-spacing: 1px; }
+.qr-url { font-size: 10px; color: #3d7a99; text-align: center; }
+.scan-tag {
+  text-align: center; margin-top: 1.25rem;
+}
+.scan-tag span {
+  font-size: 10px; letter-spacing: 2px; color: #1d5a78; text-transform: uppercase;
+}
+</style>
+
+<body>
+<div class="wrap">
+  <svg class="circuit-lines" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <g stroke="#0a3a55" stroke-width="0.8" fill="none" opacity="0.5">
+      <line x1="0" y1="80" x2="200" y2="80"/><line x1="200" y1="80" x2="200" y2="40"/><line x1="200" y1="40" x2="320" y2="40"/>
+      <line x1="600" y1="0" x2="600" y2="120"/><line x1="600" y1="120" x2="750" y2="120"/>
+      <line x1="0" y1="200" x2="80" y2="200"/><line x1="80" y1="200" x2="80" y2="280"/>
+      <line x1="720" y1="200" x2="800" y2="200"/><line x1="720" y1="200" x2="720" y2="300"/>
+      <line x1="0" y1="520" x2="150" y2="520"/><line x1="150" y1="520" x2="150" y2="560"/>
+      <line x1="700" y1="500" x2="800" y2="500"/><line x1="700" y1="450" x2="700" y2="500"/>
+    </g>
+    <g fill="#00e5ff" opacity="0.25">
+      <circle cx="200" cy="80" r="3"/><circle cx="200" cy="40" r="2"/><circle cx="600" cy="120" r="3"/>
+      <circle cx="80" cy="200" r="2"/><circle cx="720" cy="200" r="2"/><circle cx="150" cy="520" r="3"/>
+    </g>
+    <circle cx="680" cy="560" r="80" stroke="#00e5ff" stroke-width="0.5" fill="none" opacity="0.06"/>
+    <circle cx="680" cy="560" r="55" stroke="#00e5ff" stroke-width="0.5" fill="none" opacity="0.06"/>
+    <circle cx="120" cy="30" r="50" stroke="#00e5ff" stroke-width="0.5" fill="none" opacity="0.06"/>
+  </svg>
+
+  
+    <div class="header">
+      <div class="header-tag">painel de projetos</div>
+      <h2>Central de Links</h2>
+      <p>Acesse seus projetos</p>
+    </div>
+    <div class="cards-grid">
+      <a class="link-card" href="https://trabalhotetris.my.canva.site/" target="_blank">
+        <span class="card-num">01 — Design</span>
+        <div class="card-icon-wrap" style="background:#001e3a; border-color:#00aaff44;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="7" height="7" rx="1.5" fill="#00aaff" opacity=".9"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5" fill="#00aaff" opacity=".5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5" fill="#00aaff" opacity=".5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5" fill="#00aaff" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="card-title">Canva</div>
+        <div class="card-desc">Trabalho Tetris — site publicado no Canva</div>
+        <span class="card-arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://claude.ai/share/696d0ff4-6c48-4a5d-8023-847f7d472413" target="_blank">
+        <span class="card-num">02 — IA</span>
+        <div class="card-icon-wrap" style="background:#001e3a; border-color:#00e5ff44;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="8" stroke="#00e5ff" stroke-width="1.5" opacity=".8"/>
+            <path d="M9 11.5c0-1.657 1.343-3 3-3s3 1.343 3 3" stroke="#00e5ff" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>
+            <circle cx="9.5" cy="9" r="1" fill="#00e5ff"/>
+            <circle cx="14.5" cy="9" r="1" fill="#00e5ff"/>
+          </svg>
+        </div>
+        <div class="card-title">Claude</div>
+        <div class="card-desc">Conversa compartilhada — Claude AI</div>
+        <span class="card-arrow">↗</span>
+      </a>
+      <a class="link-card" href="https://lovable.dev/projects/bfe927ad-6140-48cd-86f7-e2b1c2aacd91?magic_link=mc_58d2bced-a82f-4991-8127-2259ebf1ba56" target="_blank">
+        <span class="card-num">03 — App</span>
+        <div class="card-icon-wrap" style="background:#001e3a; border-color:#00bfff44;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 20C12 20 5 14 5 9.5a5.5 5.5 0 0 1 7-5.27A5.5 5.5 0 0 1 19 9.5C19 14 12 20 12 20z" fill="#00bfff" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="card-title">Lovable</div>
+        <div class="card-desc">Projeto gerado com Lovable Dev</div>
+        <span class="card-arrow">↗</span>
+      </a>
+    </div>
+    <hr class="divider">
+    <div class="qr-section">
+      <div class="qr-header"><span>QR Code — acesso rápido</span></div>
+      <div class="qr-grid" id="qr-grid"></div>
+      <div class="scan-tag"><span>escaneie com a câmera do celular</span></div>
+    </div>
+    </div>
+  </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const links = [
+  { label: "Canva", url: "https://trabalhotetris.my.canva.site/", sub: "trabalhotetris.my.canva.site" },
+  { label: "Claude", url: "https://claude.ai/share/696d0ff4-6c48-4a5d-8023-847f7d472413", sub: "claude.ai/share" },
+  { label: "Lovable", url: "https://lovable.dev/projects/bfe927ad-6140-48cd-86f7-e2b1c2aacd91?magic_link=mc_58d2bced-a82f-4991-8127-2259ebf1ba56", sub: "lovable.dev/projects" }
+];
+const grid = document.getElementById("qr-grid");
+links.forEach(item => {
+  const card = document.createElement("div");
+  card.className = "qr-card";
+  const wrap = document.createElement("div");
+  wrap.className = "qr-canvas-wrap";
+  card.appendChild(wrap);
+  const lbl = document.createElement("div");
+  lbl.className = "qr-label";
+  lbl.textContent = item.label;
+  const sub = document.createElement("div");
+  sub.className = "qr-url";
+  sub.textContent = item.sub;
+  card.appendChild(lbl);
+  card.appendChild(sub);
+  grid.appendChild(card);
+  new QRCode(wrap, { text: item.url, width: 110, height: 110, colorDark: "#010d1e", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+});
+</script>
